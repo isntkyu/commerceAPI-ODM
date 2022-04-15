@@ -16,6 +16,6 @@
     "esModuleInterop": true,
     "typeRoots": ["./src/types/express.d.ts", "./node_modules/@types"]
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "routes/index.ts"],
   "exclude": ["node_modules", "tests"]
 }

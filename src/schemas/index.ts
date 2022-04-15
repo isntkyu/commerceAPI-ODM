@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import 'dotenv/config';
-import { ShopService } from "../services/ShopService";
 
 const connectDB = async () => {
   try {

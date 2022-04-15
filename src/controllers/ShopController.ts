@@ -5,7 +5,7 @@ const test = async (req: Request, res: Response, next: NextFunction) => {
   try{
     console.log('test')
     const shopService = new ShopService();
-    await shopService.createShop();
+    await shopService.createShop(req.body.userName);
   } catch (err) {
     next(err);
   }

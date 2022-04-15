@@ -4,12 +4,16 @@ import OrderSchema from "../schemas/order";
 import ProductSchema from "../schemas/product";
 
 export class ShopService {
-  async createShop () {
+  async createShop (userName: string) {
     try {
-      const testC = await mongoose.model('testC', CustomerSchema);
-      const testP = await mongoose.model('testP', ProductSchema);
-      const testO = await mongoose.model('testO', OrderSchema);
+      const testC = await mongoose.model(`${userName}_Customer`, CustomerSchema);
+      const testP = await mongoose.model(`${userName}_Product`, ProductSchema);
+      const testO = await mongoose.model(`${userName}_Order`, OrderSchema);
       // const data = await test.find({});
+      testC.find({}).then((res) => {
+        console.log(res);
+      });
+      // testC.update
       console.log('success');
     } catch (err) {
       console.error(err);
