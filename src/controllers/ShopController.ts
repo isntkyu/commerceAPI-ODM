@@ -9,7 +9,7 @@ export class ShopController {
   postShop = async (req: Request, res: Response, next: NextFunction) => {
     try{
       // const shopService = new ShopService();
-      console.log(111)
+      // console.log(111)
       const result = await this.shopService.createShop(req.body.userName);
       res.json({RESULT: result});
     } catch (err) {
@@ -21,7 +21,7 @@ export class ShopController {
     try{
       // const shopService = new ShopService();
       // console.log('r b ', req.body)
-      console.log(112)
+      // console.log(112)
       const result = await this.shopService.updateCustomerField(req.body);
       res.json({
         RESULT: "OK",

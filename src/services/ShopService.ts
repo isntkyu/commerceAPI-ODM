@@ -8,9 +8,9 @@ export class ShopService {
   async createShop (userName: string) {
     try {
       const testC = await mongoose.model(`${userName}_Customer`, CustomerSchema);
-      // await CustomerField.insertMany({
-      //   store: userName
-      // })
+      await CustomerField.insertMany({
+        store: userName
+      })
       const testP = await mongoose.model(`${userName}_Product`, ProductSchema);
       const testO = await mongoose.model(`${userName}_Order`, OrderSchema);
       // await testC.insertMany({ 
