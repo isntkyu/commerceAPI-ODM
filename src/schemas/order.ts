@@ -25,6 +25,9 @@ const OrderSchema = new mongoose.Schema({
   price : {
     type: Number,
     required: true,
+  },
+  device: {//
+    type: String
   }
 });
 

@@ -22,6 +22,6 @@ const ProductSchema = new mongoose.Schema({
     type: [String],
     required: true,
   }
-});
+}, { strict: false });
 
 export default ProductSchema

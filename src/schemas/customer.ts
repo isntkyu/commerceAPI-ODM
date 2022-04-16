@@ -22,6 +22,21 @@ const CustomerSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  phone: {
+    type: String
+  },
+  address: {
+    type: String
+  },
+  birthDate: {
+    type: String
+  },
+  sex: {
+    type: String
+  },
+  recommender: {
+    type: String
   }
 });
 
