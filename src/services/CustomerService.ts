@@ -29,4 +29,16 @@ export class CustomerService {
       return err;
     }
   }
+
+  async customerList (data: any) {
+    const customer = await mongoose.model(`${data.store}_customers`);
+    const result = await customer.find({});
+    return result;
+  }
+
+  async findById (store: string, customerId: string) {
+    const customer = await mongoose.model(`${store}_customers`);
+    const result = await customer.find({ id: customerId });
+    return result;
+  }
 }

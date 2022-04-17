@@ -30,4 +30,28 @@ export class CustomerController {
       next(err);
     }
   };
+
+  getCustomerList = async (req: Request, res: Response, next: NextFunction) => {
+    try{
+      // const shopService = new ShopService();
+      // console.log(111)
+      const result = await this.customerService.customerList(req.body);
+      // if (result.err) {}
+      res.json({RESULT: result});
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  getCustomer = async (req: Request, res: Response, next: NextFunction) => {
+    try{
+      // const shopService = new ShopService();
+      // console.log(111)
+      const result = await this.customerService.findById(req.body.store, req.params.customerId);
+      // if (result.err) {}
+      res.json({RESULT: result});
+    } catch (err) {
+      next(err);
+    }
+  };
 }
