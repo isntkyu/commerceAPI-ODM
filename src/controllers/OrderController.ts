@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { OrderService } from "../services/OrderService";
 
 export class OrderController {
@@ -7,7 +7,7 @@ export class OrderController {
   ) {}
 
   postOrder = async (req: Request, res: Response, next: NextFunction) => {
-    try{
+    try {
       const result = await this.orderService.order(req.body);
       res.json({RESULT: result});
     } catch (err) {
@@ -16,7 +16,7 @@ export class OrderController {
   };
   
   getOrderList = async (req: Request, res: Response, next: NextFunction) => {
-    try{
+    try {
       const result = await this.orderService.orderList(req.body);
       res.json({RESULT: result});
     } catch (err) {
@@ -25,7 +25,7 @@ export class OrderController {
   };
 
   getOrder = async (req: Request, res: Response, next: NextFunction) => {
-    try{
+    try {
       const result = await this.orderService.findById(req.body.store, req.params.orderId);
       res.json({RESULT: result});
     } catch (err) {

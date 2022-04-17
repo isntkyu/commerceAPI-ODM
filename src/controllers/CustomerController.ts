@@ -1,5 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
-import CustomerField from "../schemas/CustomerField";
+import { NextFunction, Request, Response } from "express";
 import { CustomerService } from "../services/CustomerService";
 
 export class CustomerController {
@@ -8,11 +7,8 @@ export class CustomerController {
   ) {}
 
   postUser = async (req: Request, res: Response, next: NextFunction) => {
-    try{
-      // const shopService = new ShopService();
-      // console.log(111)
-      const result = await this.customerService.join(req.body.userName, req.body);
-      // if (result.err) {}
+    try {
+      const result = await this.customerService.join(req.body);
       res.json({RESULT: result});
     } catch (err) {
       next(err);
@@ -20,11 +16,8 @@ export class CustomerController {
   };
 
   getCustomerSetting = async (req: Request, res: Response, next: NextFunction) => {
-    try{
-      // const shopService = new ShopService();
-      // console.log(111)
+    try {
       const result = await this.customerService.findCustomerSetting(req.body.userName);
-      // if (result.err) {}
       res.json({RESULT: result});
     } catch (err) {
       next(err);
@@ -32,11 +25,8 @@ export class CustomerController {
   };
 
   getCustomerList = async (req: Request, res: Response, next: NextFunction) => {
-    try{
-      // const shopService = new ShopService();
-      // console.log(111)
+    try {
       const result = await this.customerService.customerList(req.body);
-      // if (result.err) {}
       res.json({RESULT: result});
     } catch (err) {
       next(err);
@@ -44,11 +34,8 @@ export class CustomerController {
   };
 
   getCustomer = async (req: Request, res: Response, next: NextFunction) => {
-    try{
-      // const shopService = new ShopService();
-      // console.log(111)
+    try {
       const result = await this.customerService.findById(req.body.store, req.params.customerId);
-      // if (result.err) {}
       res.json({RESULT: result});
     } catch (err) {
       next(err);

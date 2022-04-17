@@ -1,9 +1,9 @@
 import express, { Express } from "express"; 
 import * as bodyParser from 'body-parser';
 import routes from './routes';
+import connectDB from "./Loaders/db";
 // import generalErrorHandler from "./errors/generalErrorHandler";
 const app : Express = express(); 
-import connectDB from "./schemas/index";
 // import 'dotenv/config';
 
 // Connect Database

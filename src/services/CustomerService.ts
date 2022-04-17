@@ -1,19 +1,30 @@
 import mongoose from "mongoose";
-import CustomerSchema from "../schemas/customer";
+import { SearchDTO } from "../interfaces/common/ISearchList";
+import CustomerSchema from "../schemas/Customer";
 import CustomerField from "../schemas/CustomerField";
 
 export class CustomerService {
-  async join (store: string, data: any) {
+  async join (data: any) {
     try {
-      const customer = await mongoose.model(`${store}_customers`, CustomerSchema);
+      const customer = await mongoose.model(`${data.store}_customers`);
+      
       const user = await customer.find({ id: data.customerId });
-      // console.log(user.length === 0);
       if (user.length !== 0) {
         return { err: '이미 존재하는 고객입니다.' }
       } else {
+        const option = await this.findCustomerSetting(data.store);
+        if ( //근데 백엔드에서해야하나
+            (option.signupRequiredPhoneUse && !data.phone)
+          || (option.signupRequiredAddressUse && !data.address)
+          || (option.signupRequiredBirthDateUse && !data.birthDate)
+          || (option.signupRequiredSexUse && !data.sex)
+          || (option.signupRequiredRecommenderUse && !data.recommender)
+        ) {
+          return { err: '필수 값을 입력해주세요.' }
+        }
         await customer.insertMany(data);
+        return 'OK';
       }
-      // return "!"
     } catch (err) {
       console.log(err);
       return err;
@@ -30,15 +41,27 @@ export class CustomerService {
     }
   }
 
-  async customerList (data: any) {
-    const customer = await mongoose.model(`${data.store}_customers`);
-    const result = await customer.find({});
-    return result;
+  async customerList (data: SearchDTO) {
+    try {
+      const customer = await mongoose.model(`${data.store}_customers`);
+      const result = await customer.find()
+      .where(data.searchTarget)
+      .regex(data.searchName);
+      return result;
+    } catch (err) {
+      console.log(err);
+      return err;
+  }
   }
 
   async findById (store: string, customerId: string) {
-    const customer = await mongoose.model(`${store}_customers`);
-    const result = await customer.find({ id: customerId });
-    return result;
+    try {
+      const customer = await mongoose.model(`${store}_customers`);
+      const result = await customer.find({ id: customerId });
+      return result;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
   }
 }
