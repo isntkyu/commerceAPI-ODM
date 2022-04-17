@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build:dev",
+    "start": "npm run build:window",
     "build": "tsc -p .",
-    "build:dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts"
+    "build:window": "nodemon --watch src/**/*.ts --exec ts-node src/app.ts",
+    "build:mac": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts"
   },
   "repository": {
     "type": "git",

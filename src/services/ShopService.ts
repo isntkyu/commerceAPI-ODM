@@ -30,6 +30,7 @@ export class ShopService {
       return 'OK';
     } catch (err) {
       console.error(err);
+      return err;
     }
   }
 
@@ -65,6 +66,7 @@ export class ShopService {
       return CustomerField.find({ store: data.userName });
     } catch (err) {
       console.error(err);
+      return err;
     }
   }
 }
