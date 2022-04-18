@@ -17,7 +17,7 @@ export class CustomerController {
 
   getCustomerSetting = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const result = await this.customerService.findCustomerSetting(req.body.userName);
+      const result = await this.customerService.findCustomerSetting(req.body.store);
       res.json({RESULT: result});
     } catch (err) {
       next(err);

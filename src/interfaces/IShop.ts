@@ -1,13 +1,13 @@
 export interface CustomerSettingDTO {
   store: string,
-  signupPhoneUse: string,
-  signupRequiredPhoneUse: string,
-  signupAddressUse: string,
-  signupRequiredAddressUse: string,
-  signupBirthDateUse: string,
-  signupRequiredBirthDateUse: string,
-  signupSexUse: string,
-  signupRequiredSexUse: string,
-  signupRecommenderUse: string,
-  signupRequiredRecommenderUse: string
+  signupPhoneUse: Boolean,
+  signupRequiredPhoneUse: Boolean,
+  signupAddressUse: Boolean,
+  signupRequiredAddressUse: Boolean,
+  signupBirthDateUse: Boolean,
+  signupRequiredBirthDateUse: Boolean,
+  signupSexUse: Boolean,
+  signupRequiredSexUse: Boolean,
+  signupRecommenderUse: Boolean,
+  signupRequiredRecommenderUse: Boolean
 }

@@ -3,7 +3,7 @@ export interface OrderInputDTO {
   store: String,
   status: String,
   customer:String,
-  products: [String],
+  products: String[],
   price : Number,
   device: String
 }

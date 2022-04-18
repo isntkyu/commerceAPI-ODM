@@ -6,14 +6,13 @@ import CustomerField from "../schemas/CustomerField";
 export class CustomerService {
   async join (data: any) {
     try {
-      const customer = await mongoose.model(`${data.store}_customers`);
-      
+      const customer = await mongoose.model(`${data.store}_customers`, CustomerSchema);
       const user = await customer.find({ id: data.customerId });
       if (user.length !== 0) {
         return { err: '이미 존재하는 고객입니다.' }
       } else {
         const option = await this.findCustomerSetting(data.store);
-        if ( //근데 백엔드에서해야하나
+        if (
             (option.signupRequiredPhoneUse && !data.phone)
           || (option.signupRequiredAddressUse && !data.address)
           || (option.signupRequiredBirthDateUse && !data.birthDate)
@@ -43,10 +42,15 @@ export class CustomerService {
 
   async customerList (data: SearchDTO) {
     try {
-      const customer = await mongoose.model(`${data.store}_customers`);
+      const customer = await mongoose.model(`${data.store}_customers`, CustomerSchema);
+
+      if (data.searchTarget === '') {
+        return await customer.find({});
+      }
+
       const result = await customer.find()
-      .where(data.searchTarget)
-      .regex(data.searchName);
+          .where(data.searchTarget)
+          .regex(`.*${data.searchName}.*`);
       return result;
     } catch (err) {
       console.log(err);
@@ -56,8 +60,8 @@ export class CustomerService {
 
   async findById (store: string, customerId: string) {
     try {
-      const customer = await mongoose.model(`${store}_customers`);
-      const result = await customer.find({ id: customerId });
+      const customer = await mongoose.model(`${store}_customers`, CustomerSchema);
+      const result = await customer.findOne({ id: customerId });
       return result;
     } catch (err) {
       console.log(err);
