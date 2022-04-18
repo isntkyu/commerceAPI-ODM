@@ -7,7 +7,7 @@ export class OrderService {
   async order (data: OrderInputDTO) {
     try {
       const order = await mongoose.model(`${data.store}_orders`, OrderSchema);
-      order.insertMany(data);
+      await order.insertMany(data);
       return "OK";
     } catch (err) {
       console.log(err);
@@ -24,8 +24,8 @@ export class OrderService {
       }
 
       const result = await order.find()
-          .where(data.searchTarget)
-          .regex(`.*${data.searchName}.*`);
+        .where(data.searchTarget)
+        .regex(`.*${data.searchName}.*`);
       return result;
     } catch (err) {
       console.log(err);

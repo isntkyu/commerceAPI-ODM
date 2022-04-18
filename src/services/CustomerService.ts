@@ -49,8 +49,8 @@ export class CustomerService {
       }
 
       const result = await customer.find()
-          .where(data.searchTarget)
-          .regex(`.*${data.searchName}.*`);
+        .where(data.searchTarget)
+        .regex(`.*${data.searchName}.*`);
       return result;
     } catch (err) {
       console.log(err);

@@ -4,7 +4,7 @@ import routes from './routes';
 import connectDB from "./Loaders/db";
 // import generalErrorHandler from "./errors/generalErrorHandler";
 const app : Express = express(); 
-// import 'dotenv/config';
+import 'dotenv/config';
 
 // Connect Database
 connectDB();
@@ -25,10 +25,10 @@ app.use(function (err, req, res, next) {
 });
 
 app 
-  .listen(3000, () => {
+  .listen(process.env.PORT || 3000, () => {
     console.log(`
     ################################################
-    🛡️  Server listening on port: 3000 🛡️
+    🛡️  Server listening on port: ${process.env.PORT || 3000} 🛡️
     ################################################
   `);
   })
