@@ -1,9 +1,21 @@
+import { ProductRepository } from "../../src/repository/ProductRepository";
 import { ProductService } from "../../src/services/ProductService";
 
 
-class ProductRepository {
-  async loadCollection() {
-    
-  }
+class MockProductRepository implements ProductRepository {
+  async loadCollection() {}
 }
-const productController = new ProductService(new ProductRepository());
+
+describe('ProductService', () => {
+  let productService: ProductService;
+
+  beforeEach(async () => {
+    productService = new ProductService(new MockProductRepository);
+  })
+
+  it ('defined', () => {
+    expect(productService).toBeDefined();
+  })
+});
+
+

@@ -11,8 +11,7 @@ export class ProductService {
 
   async add (data: ProductInputDTO) {
     try {
-      // const product = await this.productRepository.loadCollection(data);
-      const product = await mongoose.model(`${data.store}_products`, ProductSchema);
+      const product = await this.productRepository.loadCollection(data.store);
       await product.insertMany(data);
       return "OK";
     } catch (err) {
@@ -23,7 +22,7 @@ export class ProductService {
 
   async productList (data: SearchDTO) {
     try {
-      const product = await mongoose.model(`${data.store}_products`, ProductSchema);
+      const product = await this.productRepository.loadCollection(data.store);
 
       if (data.searchTarget === '') {
         return await product.find({});
@@ -41,7 +40,7 @@ export class ProductService {
 
   async findById (store:string, productId: string) {
     try {
-      const product = await mongoose.model(`${store}_products`, ProductSchema);
+      const product = await this.productRepository.loadCollection(store);
       const result = await product.findOne({ id: productId });
       return result;
     } catch (err) {
