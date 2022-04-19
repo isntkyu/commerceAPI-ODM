@@ -2,7 +2,7 @@ import express, { Express } from "express";
 import * as bodyParser from 'body-parser';
 import routes from './routes';
 import connectDB from "./Loaders/db";
-// import generalErrorHandler from "./errors/generalErrorHandler";
+import generalErrorHandler from "./errors/generalErrorHandler";
 const app : Express = express(); 
 import 'dotenv/config';
 
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use(routes);
-// app.use(generalErrorHandler);
+app.use(generalErrorHandler);
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
@@ -21,7 +21,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  // res.render("error");
+  res.render("error");
 });
 
 app 
