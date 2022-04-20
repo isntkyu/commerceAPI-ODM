@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { ProductController } from "../controllers/ProductController";
-import { ProductRepository } from "../repository/ProductRepository";
 import { ProductRepositoryImpl } from "../repository/ProductRepositoryImpl";
 import { ProductService } from "../services/ProductService";
 

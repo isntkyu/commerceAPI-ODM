@@ -1,4 +1,5 @@
-import { ProductRepository } from "../../src/repository/ProductRepository";
+
+import { ProductRepository } from "../../src/interfaces/repository/ProductRepository";
 import { ProductService } from "../../src/services/ProductService";
 
 

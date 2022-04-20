@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { ProductInputDTO } from "../interfaces/IProduct";
+import { ProductRepository } from "../interfaces/repository/ProductRepository";
 import ProductSchema from "../schemas/Product";
-import { ProductRepository } from "./ProductRepository";
 
 
 export class ProductRepositoryImpl implements ProductRepository {

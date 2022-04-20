@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { SearchDTO } from "../interfaces/common/ISearchList";
 import { ProductInputDTO } from "../interfaces/IProduct";
-import { ProductRepository } from "../repository/ProductRepository";
+import { ProductRepository } from "../interfaces/repository/ProductRepository";
 import ProductSchema from "../schemas/Product";
 
 export class ProductService {
