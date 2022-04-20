@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "npm run build:window",
+    "start": "npm run build",
+    "start-window": "npm run build:window",
+    "start-mac": "npm run build:mac",
     "build": "tsc -p .",
     "build:window": "nodemon --watch src/**/*.ts --exec ts-node src/app.ts",
     "build:mac": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts"
